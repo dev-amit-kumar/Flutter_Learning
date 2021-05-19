@@ -6,9 +6,17 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  int quesIndex = 0;
-  var questionList = [
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppWithState();
+  }
+}
+
+class _MyAppWithState extends State<MyApp> {
+  int _quesIndex = 0;
+  var _questionList = [
     {
       'ques': 'What is your favourite color?',
       'ans1': 'Pink',
@@ -52,25 +60,29 @@ class MyApp extends StatelessWidget {
       'ans4': 'Tiger'
     }
   ];
-  void ansQuestion(int val) {
+  void _ansQuestion(int val) {
     print(val);
   }
 
-  void goBack() {
-    if (quesIndex > 0) {
-      quesIndex -= 1;
-      print(quesIndex);
+  void _goBack() {
+    if (_quesIndex > 0) {
+      setState(() {
+        _quesIndex -= 1;
+      });
+      print(_quesIndex);
     } else {
-      print('${quesIndex} First question');
+      print('${_quesIndex} First question');
     }
   }
 
-  void goNext() {
-    if (quesIndex < questionList.length - 1) {
-      quesIndex += 1;
-      print(quesIndex);
+  void _goNext() {
+    if (_quesIndex < _questionList.length - 1) {
+      setState(() {
+        _quesIndex += 1;
+      });
+      print(_quesIndex);
     } else {
-      print('${quesIndex} Last question');
+      print('${_quesIndex} Last question');
     }
   }
 
@@ -84,24 +96,24 @@ class MyApp extends StatelessWidget {
       body: Column(
         children: [
           Row(children: [
-            Text('Q${quesIndex + 1}. '),
-            Text(questionList[quesIndex]['ques'])
+            Text('Q${_quesIndex + 1}. '),
+            Text(_questionList[_quesIndex]['ques'])
           ]),
           ElevatedButton(
-              child: Text(questionList[quesIndex]['ans1']),
-              onPressed: () => ansQuestion(1)),
+              child: Text(_questionList[_quesIndex]['ans1']),
+              onPressed: () => _ansQuestion(1)),
           ElevatedButton(
-              child: Text(questionList[quesIndex]['ans2']),
-              onPressed: () => ansQuestion(2)),
+              child: Text(_questionList[_quesIndex]['ans2']),
+              onPressed: () => _ansQuestion(2)),
           ElevatedButton(
-              child: Text(questionList[quesIndex]['ans3']),
-              onPressed: () => ansQuestion(3)),
+              child: Text(_questionList[_quesIndex]['ans3']),
+              onPressed: () => _ansQuestion(3)),
           ElevatedButton(
-              child: Text(questionList[quesIndex]['ans4']),
-              onPressed: () => ansQuestion(4)),
+              child: Text(_questionList[_quesIndex]['ans4']),
+              onPressed: () => _ansQuestion(4)),
           Row(children: [
-            ElevatedButton(child: Text('Back'), onPressed: goBack),
-            ElevatedButton(child: Text('Next'), onPressed: goNext)
+            ElevatedButton(child: Text('Back'), onPressed: _goBack),
+            ElevatedButton(child: Text('Next'), onPressed: _goNext)
           ])
         ],
       ),
