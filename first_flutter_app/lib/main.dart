@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
-// void main(){
-//   runApp(MyApp());
-// }
+import './answer.dart';
+import './options.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,7 +58,7 @@ class _MyAppWithState extends State<MyApp> {
       'ans4': 'Tiger'
     }
   ];
-  void _ansQuestion(int val) {
+  void _ansQuestion(String val) {
     print(val);
   }
 
@@ -95,33 +94,13 @@ class _MyAppWithState extends State<MyApp> {
         body: Column(
           children: [
             Question(_questionList[_quesIndex]['ques'], _quesIndex + 1),
-            ElevatedButton(
-                child: Text(_questionList[_quesIndex]['ans1']),
-                onPressed: () => _ansQuestion(1)),
-            ElevatedButton(
-                child: Text(_questionList[_quesIndex]['ans2']),
-                onPressed: () => _ansQuestion(2)),
-            ElevatedButton(
-                child: Text(_questionList[_quesIndex]['ans3']),
-                onPressed: () => _ansQuestion(3)),
-            ElevatedButton(
-                child: Text(_questionList[_quesIndex]['ans4']),
-                onPressed: () => _ansQuestion(4)),
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Center(
-                child: Row(
-                  children: [
-                    ElevatedButton(
-                      child: Text('Back'),
-                      onPressed: _goBack,
-                    ),
-                    ElevatedButton(child: Text('Next'), onPressed: _goNext)
-                  ],
-                  mainAxisSize: MainAxisSize.max,
-                ),
-              ),
+            Answer(_questionList[_quesIndex]['ans1'], _ansQuestion),
+            Answer(_questionList[_quesIndex]['ans2'], _ansQuestion),
+            Answer(_questionList[_quesIndex]['ans3'], _ansQuestion),
+            Answer(_questionList[_quesIndex]['ans4'], _ansQuestion),
+            Options(
+              nextFunction: _goNext,
+              backFunction: _goBack,
             )
           ],
         ),
