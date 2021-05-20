@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './question.dart';
 // void main(){
 //   runApp(MyApp());
 // }
@@ -9,7 +9,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppWithState();
   }
 }
@@ -71,7 +70,7 @@ class _MyAppWithState extends State<MyApp> {
       });
       print(_quesIndex);
     } else {
-      print('${_quesIndex} First question');
+      print('$_quesIndex First question');
     }
   }
 
@@ -82,7 +81,7 @@ class _MyAppWithState extends State<MyApp> {
       });
       print(_quesIndex);
     } else {
-      print('${_quesIndex} Last question');
+      print('$_quesIndex Last question');
     }
   }
 
@@ -95,10 +94,7 @@ class _MyAppWithState extends State<MyApp> {
       ),
       body: Column(
         children: [
-          Row(children: [
-            Text('Q${_quesIndex + 1}. '),
-            Text(_questionList[_quesIndex]['ques'])
-          ]),
+          Question(_questionList[_quesIndex]['ques'], _quesIndex + 1),
           ElevatedButton(
               child: Text(_questionList[_quesIndex]['ans1']),
               onPressed: () => _ansQuestion(1)),
@@ -111,10 +107,17 @@ class _MyAppWithState extends State<MyApp> {
           ElevatedButton(
               child: Text(_questionList[_quesIndex]['ans4']),
               onPressed: () => _ansQuestion(4)),
-          Row(children: [
-            ElevatedButton(child: Text('Back'), onPressed: _goBack),
-            ElevatedButton(child: Text('Next'), onPressed: _goNext)
-          ])
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(20),
+            alignment: AlignmentDirectional.center,
+            decoration: BoxDecoration(
+                border: Border.all(width: 2.0, color: Color(0x2371A3))),
+            child: Row(children: [
+              ElevatedButton(child: Text('Back'), onPressed: _goBack),
+              ElevatedButton(child: Text('Next'), onPressed: _goNext)
+            ]),
+          )
         ],
       ),
     ));
