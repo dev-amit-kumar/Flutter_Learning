@@ -8,10 +8,8 @@ class Question extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Text(
-        'Q$quesNo. ',
-        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-      ),
+      Text('Q$quesNo. ',
+          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)),
       Text(
         questionText,
         style: TextStyle(fontSize: 16),

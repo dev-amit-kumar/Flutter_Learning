@@ -88,38 +88,44 @@ class _MyAppWithState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text('My First App'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My First App'),
+        ),
+        body: Column(
+          children: [
+            Question(_questionList[_quesIndex]['ques'], _quesIndex + 1),
+            ElevatedButton(
+                child: Text(_questionList[_quesIndex]['ans1']),
+                onPressed: () => _ansQuestion(1)),
+            ElevatedButton(
+                child: Text(_questionList[_quesIndex]['ans2']),
+                onPressed: () => _ansQuestion(2)),
+            ElevatedButton(
+                child: Text(_questionList[_quesIndex]['ans3']),
+                onPressed: () => _ansQuestion(3)),
+            ElevatedButton(
+                child: Text(_questionList[_quesIndex]['ans4']),
+                onPressed: () => _ansQuestion(4)),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Center(
+                child: Row(
+                  children: [
+                    ElevatedButton(
+                      child: Text('Back'),
+                      onPressed: _goBack,
+                    ),
+                    ElevatedButton(child: Text('Next'), onPressed: _goNext)
+                  ],
+                  mainAxisSize: MainAxisSize.max,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
-      body: Column(
-        children: [
-          Question(_questionList[_quesIndex]['ques'], _quesIndex + 1),
-          ElevatedButton(
-              child: Text(_questionList[_quesIndex]['ans1']),
-              onPressed: () => _ansQuestion(1)),
-          ElevatedButton(
-              child: Text(_questionList[_quesIndex]['ans2']),
-              onPressed: () => _ansQuestion(2)),
-          ElevatedButton(
-              child: Text(_questionList[_quesIndex]['ans3']),
-              onPressed: () => _ansQuestion(3)),
-          ElevatedButton(
-              child: Text(_questionList[_quesIndex]['ans4']),
-              onPressed: () => _ansQuestion(4)),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            alignment: AlignmentDirectional.center,
-            decoration: BoxDecoration(
-                border: Border.all(width: 2.0, color: Color(0x2371A3))),
-            child: Row(children: [
-              ElevatedButton(child: Text('Back'), onPressed: _goBack),
-              ElevatedButton(child: Text('Next'), onPressed: _goNext)
-            ]),
-          )
-        ],
-      ),
-    ));
+    );
   }
 }
