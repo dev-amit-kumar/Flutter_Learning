@@ -19,19 +19,23 @@ class PlayQuiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Question(quesList[index]['ques'], index + 1),
-        ...(quesList[index]['answers'] as List<String>).map((ans) {
-          return Answer(ansText: ans, chooseHandler: ansQues);
-        }).toList(),
-        Options(
-          nextFunction: goNext,
-          backFunction: goBack,
-          isBack: index != 0,
-          isNext: index != quesList.length - 1,
-        ),
-      ],
+    return Container(
+      padding: EdgeInsets.only(right: 20, left: 20),
+      margin: EdgeInsets.only(top: 20),
+      child: Column(
+        children: [
+          Question(quesList[index]['ques'], index + 1),
+          ...(quesList[index]['answers'] as List<String>).map((ans) {
+            return Answer(ansText: ans, chooseHandler: ansQues);
+          }).toList(),
+          Options(
+            nextFunction: goNext,
+            backFunction: goBack,
+            isBack: index != 0,
+            isNext: index != quesList.length - 1,
+          ),
+        ],
+      ),
     );
   }
 }
