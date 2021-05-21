@@ -3,18 +3,34 @@ import 'package:flutter/material.dart';
 class Options extends StatelessWidget {
   final Function nextFunction;
   final Function backFunction;
-  Options({this.nextFunction, this.backFunction});
+  final bool isNext;
+  final bool isBack;
+  Options({this.nextFunction, this.backFunction, this.isBack, this.isNext});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       child: Row(
         children: [
-          ElevatedButton(
-            child: Text('Back'),
-            onPressed: backFunction,
-          ),
-          ElevatedButton(child: Text('Next'), onPressed: nextFunction)
+          isBack
+              ? ElevatedButton(
+                  child: Text('Back'),
+                  onPressed: backFunction,
+                )
+              : ElevatedButton(
+                  child: Text('Back'),
+                  onPressed: null,
+                ),
+          isNext
+              ? ElevatedButton(
+                  child: Text('Next'),
+                  onPressed: nextFunction,
+                )
+              : ElevatedButton(
+                  child: Text('Next'),
+                  onPressed: null,
+                )
         ],
         mainAxisSize: MainAxisSize.max,
       ),

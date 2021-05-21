@@ -95,6 +95,8 @@ class _MyAppWithState extends State<MyApp> {
             Options(
               nextFunction: _goNext,
               backFunction: _goBack,
+              isBack: _quesIndex != 0,
+              isNext: _quesIndex != _questionList.length - 1,
             ),
           ],
         ),
