@@ -17,49 +17,43 @@ class _MyAppWithState extends State<MyApp> {
   var _questionList = [
     {
       'ques': 'What is your favourite color?',
-      'ans1': 'Pink',
-      'ans2': 'Black',
-      'ans3': 'Blue',
-      'ans4': 'White'
+      'answers': ['Pink', 'Black', 'Blue', 'White'],
+      'correctAns': 'Blue'
     },
     {
       'ques': 'What is your favourite animal?',
-      'ans1': 'Dog',
-      'ans2': 'Cat',
-      'ans3': 'Lion',
-      'ans4': 'Tiger'
+      'answers': ['Dog', 'Cat', 'Lion', 'Tiger'],
+      'correctAns': 'Tiger'
     },
     {
       'ques': 'What is your favourite animal?',
-      'ans1': 'Dog',
-      'ans2': 'Cat',
-      'ans3': 'Lion',
-      'ans4': 'Tiger'
+      'answers': ['Dog', 'Cat', 'Lion', 'Tiger'],
+      'correctAns': 'Tiger'
     },
     {
       'ques': 'What is your favourite animal?',
-      'ans1': 'Dog',
-      'ans2': 'Cat',
-      'ans3': 'Lion',
-      'ans4': 'Tiger'
+      'answers': ['Dog', 'Cat', 'Lion', 'Tiger'],
+      'correctAns': 'Tiger'
     },
     {
       'ques': 'What is your favourite animal?',
-      'ans1': 'Dog',
-      'ans2': 'Cat',
-      'ans3': 'Lion',
-      'ans4': 'Tiger'
+      'answers': ['Dog', 'Cat', 'Lion', 'Tiger'],
+      'correctAns': 'Tiger'
     },
     {
       'ques': 'What is your favourite animal?',
-      'ans1': 'Dog',
-      'ans2': 'Cat',
-      'ans3': 'Lion',
-      'ans4': 'Tiger'
+      'answers': ['Dog', 'Cat', 'Lion', 'Tiger'],
+      'correctAns': 'Tiger'
     }
   ];
+
   void _ansQuestion(String val) {
     print(val);
+    if (val == _questionList[_quesIndex]['correctAns']) {
+      print('Correct');
+    } else {
+      print('Wrong');
+    }
   }
 
   void _goBack() {
@@ -94,14 +88,14 @@ class _MyAppWithState extends State<MyApp> {
         body: Column(
           children: [
             Question(_questionList[_quesIndex]['ques'], _quesIndex + 1),
-            Answer(_questionList[_quesIndex]['ans1'], _ansQuestion),
-            Answer(_questionList[_quesIndex]['ans2'], _ansQuestion),
-            Answer(_questionList[_quesIndex]['ans3'], _ansQuestion),
-            Answer(_questionList[_quesIndex]['ans4'], _ansQuestion),
+            ...(_questionList[_quesIndex]['answers'] as List<String>)
+                .map((ans) {
+              return Answer(ansText: ans, chooseHandler: _ansQuestion);
+            }).toList(),
             Options(
               nextFunction: _goNext,
               backFunction: _goBack,
-            )
+            ),
           ],
         ),
       ),

@@ -8,7 +8,6 @@ class Options extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: Colors.blue),
       child: Row(
         children: [
           ElevatedButton(
