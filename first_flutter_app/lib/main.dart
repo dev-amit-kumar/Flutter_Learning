@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
-import './options.dart';
+import './Quiz/playQuiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +12,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppWithState extends State<MyApp> {
   int _quesIndex = 0;
+  int _quesAnswered = 0;
   var _questionList = [
     {
       'ques': 'What is your favourite color?',
@@ -48,11 +47,13 @@ class _MyAppWithState extends State<MyApp> {
   ];
 
   void _ansQuestion(String val) {
-    print(val);
+    setState(() {
+      _quesAnswered += 1;
+    });
     if (val == _questionList[_quesIndex]['correctAns']) {
-      print('Correct');
+      print('Correct $_quesAnswered');
     } else {
-      print('Wrong');
+      print('Wrong $_quesAnswered');
     }
   }
 
@@ -82,25 +83,18 @@ class _MyAppWithState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('My First App'),
-        ),
-        body: Column(
-          children: [
-            Question(_questionList[_quesIndex]['ques'], _quesIndex + 1),
-            ...(_questionList[_quesIndex]['answers'] as List<String>)
-                .map((ans) {
-              return Answer(ansText: ans, chooseHandler: _ansQuestion);
-            }).toList(),
-            Options(
-              nextFunction: _goNext,
-              backFunction: _goBack,
-              isBack: _quesIndex != 0,
-              isNext: _quesIndex != _questionList.length - 1,
-            ),
-          ],
-        ),
-      ),
+          appBar: AppBar(
+            title: Text('My First App'),
+          ),
+          body: (_quesAnswered != _questionList.length)
+              ? PlayQuiz(
+                  quesList: _questionList,
+                  index: _quesIndex,
+                  goNext: _goNext,
+                  goBack: _goBack,
+                  ansQues: _ansQuestion,
+                )
+              : Text('Completed')),
     );
   }
 }
