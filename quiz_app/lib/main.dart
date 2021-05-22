@@ -1,4 +1,4 @@
-import 'package:first_flutter_app/Quiz/quizScreen.dart';
+import 'package:first_flutter_app/Quiz/index.dart';
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 

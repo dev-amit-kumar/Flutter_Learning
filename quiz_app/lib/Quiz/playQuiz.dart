@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'widgets/question.dart';
-import 'widgets/answer.dart';
 import 'widgets/options.dart';
 
 class PlayQuiz extends StatelessWidget {
@@ -24,10 +23,12 @@ class PlayQuiz extends StatelessWidget {
       margin: EdgeInsets.only(top: 20),
       child: Column(
         children: [
-          Question(quesList[index]['ques'], index + 1),
-          ...(quesList[index]['answers'] as List<String>).map((ans) {
-            return Answer(ansText: ans, chooseHandler: ansQues);
-          }).toList(),
+          Question(
+            question: quesList[index]['ques'],
+            quesNo: index + 1,
+            options: quesList[index]['answers'],
+            submitFunction: ansQues,
+          ),
           Options(
             nextFunction: goNext,
             backFunction: goBack,
