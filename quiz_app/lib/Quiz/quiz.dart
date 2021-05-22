@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
-import 'answer.dart';
-import 'options.dart';
+import 'widgets/question.dart';
+import 'widgets/answer.dart';
+import 'widgets/options.dart';
 
 class PlayQuiz extends StatelessWidget {
   final List<Map<String, Object>> quesList;
