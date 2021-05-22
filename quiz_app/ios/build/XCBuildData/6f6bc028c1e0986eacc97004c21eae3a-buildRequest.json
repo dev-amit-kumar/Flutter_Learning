@@ -1,0 +1,58 @@
+{
+  "buildCommand" : "prepareForIndexing",
+  "configuredTargets" : [
+    {
+      "guid" : "fd9e0eb835ba42036d8bb11c25a2011388a783a885d8b0b3beb2e9f90bde3f49"
+    }
+  ],
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator14.5",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/amitkumar/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/amitkumar/Library/Developer/Xcode/DerivedData/Runner-hjncymvpdarvwldesqsceqacjsox/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/amitkumar/Library/Developer/Xcode/DerivedData/Runner-hjncymvpdarvwldesqsceqacjsox/Index/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPod9,1",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "14.5",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "ENABLE_PREVIEWS" : "NO",
+          "TARGET_DEVICE_IDENTIFIER" : "B5A77DA2-F38C-44B3-8AE2-A3C3920A426A",
+          "TARGET_DEVICE_MODEL" : "iPod9,1",
+          "TARGET_DEVICE_OS_VERSION" : "14.5",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphonesimulator"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
