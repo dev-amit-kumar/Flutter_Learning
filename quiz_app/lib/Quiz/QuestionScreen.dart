@@ -3,18 +3,24 @@ import 'widgets/question.dart';
 import 'widgets/options.dart';
 
 class QuestionScreen extends StatelessWidget {
-  final List<Map<String, Object>> quesList;
-  final int index;
-  final Function ansQues;
+  final Map quesData;
+  final int quesNo;
+  final Function ansHandler;
   final Function goNext;
   final Function goBack;
+  final bool isBack;
+  final bool isNext;
+  final String currentAns;
 
   QuestionScreen(
-      {@required this.quesList,
-      @required this.index,
-      @required this.ansQues,
+      {@required this.quesData,
+      @required this.ansHandler,
       @required this.goBack,
-      @required this.goNext});
+      @required this.goNext,
+      @required this.isBack,
+      @required this.isNext,
+      @required this.quesNo,
+      @required this.currentAns});
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +30,16 @@ class QuestionScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Question(
-            question: quesList[index]['ques'],
-            quesNo: index + 1,
-            options: quesList[index]['answers'],
-            submitFunction: ansQues,
-          ),
+              question: quesData['ques'],
+              quesNo: quesNo,
+              options: quesData['answers'],
+              submitFunction: ansHandler,
+              currAns: currentAns),
           Options(
             nextFunction: goNext,
             backFunction: goBack,
-            isBack: index != 0,
-            isNext: index != quesList.length - 1,
+            isBack: isBack,
+            isNext: isNext,
           ),
         ],
       ),

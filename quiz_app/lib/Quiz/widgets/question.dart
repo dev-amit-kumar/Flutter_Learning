@@ -5,7 +5,13 @@ class Question extends StatelessWidget {
   final int quesNo;
   final List options;
   final Function submitFunction;
-  Question({this.question, this.quesNo, this.options, this.submitFunction});
+  final String currAns;
+  Question(
+      {@required this.question,
+      @required this.quesNo,
+      @required this.options,
+      @required this.submitFunction,
+      @required this.currAns});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -16,10 +22,11 @@ class Question extends StatelessWidget {
             Row(children: [
               Text('Q$quesNo. ',
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20)),
-              Text(
+              Flexible(
+                  child: Text(
                 question,
                 style: TextStyle(fontSize: 16),
-              )
+              ))
             ]),
             Column(
               children: [
@@ -30,8 +37,10 @@ class Question extends StatelessWidget {
                       children: [
                         // ElevatedButton(onPressed: () => submitFunction(ans)),
                         Radio(
-                            value: ans, groupValue: 'abc', onChanged: (val) {}),
-                        Text(ans)
+                            value: ans,
+                            groupValue: currAns,
+                            onChanged: (val) => submitFunction(val)),
+                        Flexible(child: Text(ans))
                       ],
                     ),
                   );

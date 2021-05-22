@@ -84,10 +84,12 @@ class _QuizScreenWithState extends State<QuizScreen> {
     }
   ];
 
-  void _ansQuestion(String val) {
+  void addAnswer(String val) {
     int quesId = _questionList[_quesIndex]['quesId'];
     bool isPresent = result.containsKey(quesId);
-    result[quesId] = val;
+    setState(() {
+      result[quesId] = val;
+    });
     if (!isPresent) {
       setState(() {
         _quesAnswered += 1;
@@ -120,11 +122,14 @@ class _QuizScreenWithState extends State<QuizScreen> {
         ),
         body: (_quesAnswered != _questionList.length)
             ? QuestionScreen(
-                quesList: _questionList,
-                index: _quesIndex,
+                quesData: _questionList[_quesIndex],
+                quesNo: _quesIndex + 1,
+                isBack: _quesIndex != 0,
+                isNext: _quesIndex != _questionList.length - 1,
                 goNext: _goNext,
                 goBack: _goBack,
-                ansQues: _ansQuestion,
+                ansHandler: addAnswer,
+                currentAns: result[_questionList[_quesIndex]['quesId']],
               )
             : Result(
                 questionList: _questionList,
