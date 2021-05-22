@@ -8,28 +8,41 @@ class Question extends StatelessWidget {
   Question({this.question, this.quesNo, this.options, this.submitFunction});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(children: [
-          Text('Q$quesNo. ',
-              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20)),
-          Text(
-            question,
-            style: TextStyle(fontSize: 16),
-          )
-        ]),
-        Column(
+    return Card(
+      child: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
           children: [
-            ...(options as List<String>).map((ans) {
-              return Container(
-                width: double.infinity,
-                child: ElevatedButton(
-                    child: Text(ans), onPressed: () => submitFunction(ans)),
-              );
-            }).toList(),
+            Row(children: [
+              Text('Q$quesNo. ',
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20)),
+              Text(
+                question,
+                style: TextStyle(fontSize: 16),
+              )
+            ]),
+            Column(
+              children: [
+                ...(options as List<String>).map((ans) {
+                  return Container(
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        // ElevatedButton(onPressed: () => submitFunction(ans)),
+                        Radio(
+                            value: ans, groupValue: 'abc', onChanged: (val) {}),
+                        Text(ans)
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ],
+            )
           ],
-        )
-      ],
+        ),
+      ),
+      color: Colors.grey[50],
+      elevation: 1,
     );
   }
 }

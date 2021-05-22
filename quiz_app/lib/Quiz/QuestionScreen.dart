@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'widgets/question.dart';
 import 'widgets/options.dart';
 
-class PlayQuiz extends StatelessWidget {
+class QuestionScreen extends StatelessWidget {
   final List<Map<String, Object>> quesList;
   final int index;
   final Function ansQues;
   final Function goNext;
   final Function goBack;
 
-  PlayQuiz(
+  QuestionScreen(
       {@required this.quesList,
       @required this.index,
       @required this.ansQues,
@@ -19,9 +19,9 @@ class PlayQuiz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: 20, left: 20),
-      margin: EdgeInsets.only(top: 20),
+      padding: EdgeInsets.all(5),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Question(
             question: quesList[index]['ques'],

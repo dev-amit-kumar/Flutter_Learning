@@ -9,31 +9,29 @@ class Options extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: Row(
-        children: [
-          isBack
-              ? ElevatedButton(
-                  child: Text('Back'),
-                  onPressed: backFunction,
-                )
-              : ElevatedButton(
-                  child: Text('Back'),
-                  onPressed: null,
-                ),
-          isNext
-              ? ElevatedButton(
-                  child: Text('Next'),
-                  onPressed: nextFunction,
-                )
-              : ElevatedButton(
-                  child: Text('Next'),
-                  onPressed: null,
-                )
-        ],
-        mainAxisSize: MainAxisSize.max,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        isBack
+            ? ElevatedButton(
+                child: Text('Back'),
+                onPressed: backFunction,
+              )
+            : ElevatedButton(
+                child: Text('Back'),
+                onPressed: null,
+              ),
+        isNext
+            ? ElevatedButton(
+                child: Text('Next'),
+                onPressed: nextFunction,
+              )
+            : ElevatedButton(
+                child: Text('Next'),
+                onPressed: null,
+              )
+      ],
+      mainAxisSize: MainAxisSize.max,
     );
   }
 }

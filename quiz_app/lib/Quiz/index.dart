@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'playQuiz.dart';
+import 'QuestionScreen.dart';
 import 'reviewAnswer.dart';
 
 class QuizScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _QuizScreenWithState();
-  }
+  State<StatefulWidget> createState() => _QuizScreenWithState();
 }
 
 class _QuizScreenWithState extends State<QuizScreen> {
@@ -121,7 +119,7 @@ class _QuizScreenWithState extends State<QuizScreen> {
           title: Text('My First App'),
         ),
         body: (_quesAnswered != _questionList.length)
-            ? PlayQuiz(
+            ? QuestionScreen(
                 quesList: _questionList,
                 index: _quesIndex,
                 goNext: _goNext,
