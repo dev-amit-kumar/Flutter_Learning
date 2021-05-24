@@ -22,11 +22,13 @@ class Result extends StatelessWidget {
                   child: Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text('Ques: ',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w800, fontSize: 14)),
+                          Text(
+                            'Ques: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, fontSize: 14),
+                          ),
                           Flexible(
                             child: Text(
                               question['ques'],
@@ -43,9 +45,11 @@ class Result extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('Ans:   ',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w800, fontSize: 14)),
+                          Text(
+                            'Ans:   ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, fontSize: 14),
+                          ),
                           Flexible(
                             child: Text(
                               answerList[question['quesId']],
@@ -59,7 +63,10 @@ class Result extends StatelessWidget {
                 ),
               );
             }).toList(),
-            ElevatedButton(onPressed: null, child: Text('Submit'))
+            ElevatedButton(
+              onPressed: null,
+              child: Text('Submit'),
+            ),
           ],
         ),
       ),
